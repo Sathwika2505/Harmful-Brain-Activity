@@ -4,6 +4,5 @@ torchaudio
 dill
 paramiko
 matplotlib
-functools
 multiprocessing
 boto3
