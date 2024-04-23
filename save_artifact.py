@@ -1,5 +1,4 @@
 from feature_engineering import transform_data
-import torch
 import pickle
 
 def save_artifact():

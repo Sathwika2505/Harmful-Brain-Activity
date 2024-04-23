@@ -1,4 +1,3 @@
-from datavisualization import save_eeg_images
 import torchvision
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader, Dataset
@@ -12,8 +11,6 @@ from torchvision import datasets
 import pickle
 
 def transform_data():
-
-    saved_files = save_and_display_images()
     output_dir = os.path.join(os.getcwd(),"images")
     
     data_transform = torchvision.transforms.Compose(
