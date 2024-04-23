@@ -16,9 +16,6 @@ try:
     # Read the downloaded file using Pandas
     df = pd.read_csv(io.BytesIO(eeg_specs_data))
 
-    # Now you can work with the DataFrame 'df'
-    print(df)
-
 except Exception as e:
     print(f"Error downloading or reading file from S3: {e}")
 
