@@ -4,3 +4,7 @@ torchaudio
 dill
 paramiko
 matplotlib
+pickle
+functools
+multiprocessing
+boto3
