@@ -1,12 +1,6 @@
 import torchvision
 import torchvision.transforms as transforms
-from torch.utils.data import DataLoader, Dataset
-import requests
-from PIL import Image
-from io import BytesIO
-import torch
 import os
-from torchvision.datasets import ImageFolder
 from torchvision import datasets
 import pickle
 

@@ -3,15 +3,10 @@ import boto3
 import io
 import pathlib
 from PIL import Image
-import gc, random
+import random
 from data_extraction import df
-from io import BytesIO
-import pandas as pd, numpy as np, os
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-from torch.utils.data import Dataset, DataLoader
-import torchvision.transforms as transforms 
+import numpy as np, os
+
 
 replacement_dict = {
     'Seizure': 0,
