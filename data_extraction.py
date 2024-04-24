@@ -4,7 +4,7 @@ import io, os
 access_key = os.environ.get("AWS_ACCESS_KEY_ID")
 secret_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
 #bucket_name = os.environ.get("Bucket_Name")
-
+print("-acckey-----:",access_key, secret_key)
 # Initialize the S3 client
 s3 = boto3.client('s3', aws_access_key_id=access_key,
                       aws_secret_access_key=secret_key,
