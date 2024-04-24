@@ -20,6 +20,7 @@ try:
 
     # Read the downloaded file using Pandas
     df = pd.read_csv(io.BytesIO(eeg_specs_data))
+    print(df.head())
 
 except Exception as e:
     print(f"Error downloading or reading file from S3: {e}")
