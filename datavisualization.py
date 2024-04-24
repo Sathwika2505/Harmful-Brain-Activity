@@ -46,7 +46,9 @@ print('Train non-overlapp eeg_id shape:', train.shape )
 train.head()
 print("train eeg====================",train['eeg_id'])
 #train.to_csv("train_final.csv",index=False)
-
+access_key = os.environ.get("AWS_ACCESS_KEY_ID")
+secret_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
+#bucket_name = os.environ.get("Bucket_Name")
 bucket_name = 'deeplearning-mlops-demo'
 file_key = 'eeg_spectrograms16diff.npy'
 
@@ -59,7 +61,9 @@ FEATS = [['Fp1','F7','T3','T5','O1'],
 def load_data_from_s3(bucket_name, file_key):
     try:
         print("Accessing file from S3")
-        s3 = boto3.client('s3')
+        s3 = boto3.client('s3', aws_access_key_id=access_key,
+                      aws_secret_access_key=secret_key,
+                      region_name='us-east-1')
         response = s3.get_object(Bucket=bucket_name, Key=file_key)
         eeg_specs_data = response['Body'].read()
         spectrograms = np.load(io.BytesIO(eeg_specs_data), allow_pickle=True).item()
