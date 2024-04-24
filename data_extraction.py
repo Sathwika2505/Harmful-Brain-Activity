@@ -1,9 +1,14 @@
 import pandas as pd
 import boto3
 import io
+access_key = os.environ.get("AWS_ACCESS_KEY_ID")
+secret_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
+#bucket_name = os.environ.get("Bucket_Name")
 
 # Initialize the S3 client
-s3 = boto3.client('s3')
+s3 = boto3.client('s3', aws_access_key_id=access_key,
+                      aws_secret_access_key=secret_key,
+                      region_name='us-east-1')
 
 bucket_name = 'usecases-cleandata'
 file_key = 'kaggle-competition-dataset/train.csv'
