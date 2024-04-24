@@ -61,7 +61,7 @@ FEATS = [['Fp1','F7','T3','T5','O1'],
          ['Fp2','F4','C4','P4','O2']]
 
 ## Function to load data from S3
-def load_data_from_s3(bucket_name, file_key):
+def load_data_from_s3(bucket_name, file_key, access_key,secret_key):
     try:
         print("Accessing file from S3")
         print("bucket:" , bucket_name)
@@ -84,7 +84,7 @@ def load_data_from_s3(bucket_name, file_key):
         
 
 
-spectrograms = load_data_from_s3(bucket_name, file_key)
+spectrograms = load_data_from_s3(bucket_name, file_key, access_key,secret_key)
 print("File loaded")
 
 def save_eeg_images(spectrograms, train, replacement_dict):
