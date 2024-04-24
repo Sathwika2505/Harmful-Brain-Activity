@@ -1,6 +1,6 @@
 import pandas as pd
 import boto3
-import io
+import io, os
 access_key = os.environ.get("AWS_ACCESS_KEY_ID")
 secret_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
 #bucket_name = os.environ.get("Bucket_Name")
