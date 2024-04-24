@@ -70,7 +70,7 @@ def load_data_from_s3(bucket_name, file_key, access_key,secret_key):
                       region_name='us-east-1')
         response = s3.get_object(Bucket=bucket_name, Key=file_key)
         print("------:",response)
-        eeg_specs_data = response['Body']
+        eeg_specs_data = response['Body'].read()
         print("====eeg====:",type(eeg_specs_data))
         with io.BytesIO(eeg_specs_data) as npy_file:
             spectrograms = np.load(npy_file, allow_pickle=True).item()
