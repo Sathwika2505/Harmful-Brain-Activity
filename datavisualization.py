@@ -72,7 +72,9 @@ def load_data_from_s3(bucket_name, file_key, access_key,secret_key):
         print("------:",response)
         eeg_specs_data = response['Body']
         print("====eeg====:",type(eeg_specs_data))
-        spectrograms = np.load(io.BytesIO(response['Body']), allow_pickle=True).item()
+        with io.BytesIO(eeg_specs_data) as npy_file:
+            spectrograms = np.load(npy_file, allow_pickle=True).item()
+        #spectrograms = np.load(io.BytesIO(response['Body']), allow_pickle=True).item()
         print("------------:",spectrograms)
         return spectrograms
         
