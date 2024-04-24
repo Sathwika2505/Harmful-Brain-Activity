@@ -72,6 +72,7 @@ def load_data_from_s3(bucket_name, file_key, access_key,secret_key):
         print("------:",response)
         eeg_specs_data = response['Body'].read()
         if not eeg_specs_data:
+            print('insideif')
             print("Error: Empty data received from S3")
             return None
         print("====eeg====:",type(eeg_specs_data))
@@ -94,6 +95,7 @@ def save_eeg_images(spectrograms, train, replacement_dict):
     saved_files = []
 
     # Create folders for each label if they don't exist
+    
     for label in replacement_dict.keys():
         folder_path = f"images/{label}"
         pathlib.Path(folder_path).mkdir(parents=True, exist_ok=True)
