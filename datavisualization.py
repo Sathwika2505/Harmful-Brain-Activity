@@ -69,6 +69,7 @@ def load_data_from_s3(bucket_name, file_key):
                       aws_secret_access_key=secret_key,
                       region_name='us-east-1')
         response = s3.get_object(Bucket=bucket_name, Key=file_key)
+        print("------:",response)
         eeg_specs_data = response['Body'].read()
         spectrograms = np.load(io.BytesIO(eeg_specs_data), allow_pickle=True).item()
         print("------------:",spectrograms)
