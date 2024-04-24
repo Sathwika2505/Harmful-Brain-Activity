@@ -75,6 +75,7 @@ def load_data_from_s3(bucket_name, file_key):
         return spectrograms
         
     except Exception as e:
+        print("---err--:",e)
         print(f"Error downloading file from S3: {e}")
         print(f"Error loading numpy array from binary data: {e}")
         return None
