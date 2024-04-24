@@ -87,7 +87,7 @@ def load_data_from_s3(bucket_name, file_key, access_key,secret_key):
 
 
 spectrograms = load_data_from_s3(bucket_name, file_key, access_key,secret_key)
-print("File loaded")
+print("File loaded", spectrograms)
 
 def save_eeg_images(spectrograms, train, replacement_dict):
     saved_files = []
