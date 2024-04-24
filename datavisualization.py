@@ -49,8 +49,8 @@ print("train eeg====================",train['eeg_id'])
 access_key = os.environ.get("AWS_ACCESS_KEY_ID")
 secret_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
 #bucket_name = os.environ.get("Bucket_Name")
-bucket_name = 'deeplearning-mlops'
-file_key = 'eeg_spectrograms16diff.npy'
+bucket_name = 'usecases-cleandata'
+file_key = 'kaggle-competition-dataset/eeg_spectrograms16diff.npy'
 
 FEATS = [['Fp1','F7','T3','T5','O1'],
          ['Fp1','F3','C3','P3','O1'],
