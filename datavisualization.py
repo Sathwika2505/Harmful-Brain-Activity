@@ -100,7 +100,8 @@ def save_eeg_images(spectrograms, train, replacement_dict):
     # Create folders for each label if they don't exist
     
     for label in replacement_dict.keys():
-        folder_path = f"images/{label}"
+        cwd = os.getcwd()
+        folder_path = f"{cwd}/images/{label}"
         pathlib.Path(folder_path).mkdir(parents=True, exist_ok=True)
 
     # Iterate over each EEG data
