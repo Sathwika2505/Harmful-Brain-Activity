@@ -62,6 +62,7 @@ FEATS = [['Fp1','F7','T3','T5','O1'],
 
 ## Function to load data from S3
 def load_data_from_s3(bucket_name, file_key, access_key,secret_key):
+    print("Inside load_data_from_s3")
     try:
         print("Accessing file from S3")
         print("bucket:" , bucket_name)
@@ -70,14 +71,14 @@ def load_data_from_s3(bucket_name, file_key, access_key,secret_key):
                       region_name='us-east-1')
         response = s3.get_object(Bucket=bucket_name, Key=file_key)
         print("------:",response)
-        #eeg_specs_data = response['Body'].read()
-        eeg_specs_data = b""
-        for chunk in response['Body'].iter_chunks():
-            eeg_specs_data += chunk
+        eeg_specs_data = response['Body'].read()
+        # eeg_specs_data = b""
+        # for chunk in response['Body'].iter_chunks():
+        #     eeg_specs_data += chunk
         print("====eeg====:",type(eeg_specs_data))
-        with io.BytesIO(eeg_specs_data) as npy_file:
-            spectrograms = np.load(npy_file, allow_pickle=True).item()
-        #spectrograms = np.load(io.BytesIO(response['Body']), allow_pickle=True).item()
+        # with io.BytesIO(eeg_specs_data) as npy_file:
+        #     spectrograms = np.load(npy_file, allow_pickle=True).item()
+        spectrograms = np.load(io.BytesIO(response['Body']), allow_pickle=True).item()
         print("------------:",spectrograms)
         return spectrograms
         
@@ -93,6 +94,7 @@ spectrograms = load_data_from_s3(bucket_name, file_key, access_key,secret_key)
 print("File loaded", spectrograms)
 
 def save_eeg_images(spectrograms, train, replacement_dict):
+    print("Inside save_eeg_images")
     saved_files = []
 
     # Create folders for each label if they don't exist
@@ -129,12 +131,13 @@ saved_files = save_eeg_images(spectrograms, train, replacement_dict)
 print("Saved Files:", saved_files)
 
 def open_random_image(path):
-        # Get a list of all files in the folder
-        all_files = os.listdir(path)
-        random_image_file = random.choice(all_files)
-        image_path = os.path.join(path, random_image_file)
-        image = Image.open(image_path)
-        return image
+    print("Inside open_random_image")
+    # Get a list of all files in the folder
+    all_files = os.listdir(path)
+    random_image_file = random.choice(all_files)
+    image_path = os.path.join(path, random_image_file)
+    image = Image.open(image_path)
+    return image
 GPA = open_random_image(os.path.join(os.getcwd(),"images/GPA"))
 GRDA = open_random_image(os.path.join(os.getcwd(),"images/GRDA"))
 LPD = open_random_image(os.path.join(os.getcwd(),"images/LPD"))
