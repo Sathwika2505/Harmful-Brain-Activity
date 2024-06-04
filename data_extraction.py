@@ -10,8 +10,8 @@ s3 = boto3.client('s3', aws_access_key_id=access_key,
                       aws_secret_access_key=secret_key,
                       region_name='us-east-1')
 
-bucket_name = 'usecases-cleandata'
-file_key = 'kaggle-competition-dataset/train.csv'
+bucket_name = 'deeplearning-mlops-demo'
+file_key = 'hms_train.csv'
 
 # Download the file from S3
 try:
